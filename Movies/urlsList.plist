@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>getPopularListMovie</key>
+	<string>popular</string>
+	<key>baseUrl</key>
+	<string>https://api.themoviedb.org/3/movie/</string>
+	<key>imgBaseUrl</key>
+	<string>http://image.tmdb.org/t/p/w185/</string>
+</dict>
+</plist>
