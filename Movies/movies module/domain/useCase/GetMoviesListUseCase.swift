@@ -8,19 +8,16 @@
 import RxSwift
 
 protocol GetMoviesListUseCaseProtocol {
-    func build(param: PopularMoviesRequest, moviesRepo: MoviesListRepo) -> Observable<[MoviesUIViewModel]>
+    func build(param: PopularMoviesRequest, moviesRepo: MoviesListRepo) -> Observable<GetPopularMoviesViewModelStatus>
 }
 
 class GetMoviesListUseCase: GetMoviesListUseCaseProtocol {
-    func build(param: PopularMoviesRequest, moviesRepo: MoviesListRepo) -> Observable<[MoviesUIViewModel]> {
-        var moviesUIModel = [MoviesUIViewModel]()
-        return moviesRepo.getPopularMovies(param: param).map {
-            let moviesObject = $0
-            for movie in moviesObject.movies {
-                let viewModel = MoviesUIViewModel(movieName: movie.title, movieImage: movie.posterPath)
-                moviesUIModel.append(viewModel)
-            }
-             return moviesUIModel
-        }
-   }
+    func build(param: PopularMoviesRequest, moviesRepo: MoviesListRepo) -> Observable<GetPopularMoviesViewModelStatus> {
+        
+        return moviesRepo.getPopularMovies(param: param).map({
+            guard let moviesObject = $0.movies else {return .fail(errorMsg: "fail to get popular movie list")}
+            let imageBaseURl = URLReader.readPropertyList(urlType: "imgBaseUrl")
+            return .sucess(movies: moviesObject.map({MoviesUIViewModel(movieName: $0.title, movieImage: imageBaseURl + $0.posterPath)}))
+        })
+    }
 }

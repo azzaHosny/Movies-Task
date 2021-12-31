@@ -7,6 +7,6 @@
 	<key>baseUrl</key>
 	<string>https://api.themoviedb.org/3/movie/</string>
 	<key>imgBaseUrl</key>
-	<string>http://image.tmdb.org/t/p/w185/</string>
+	<string>http://image.tmdb.org/t/p/w185</string>
 </dict>
 </plist>

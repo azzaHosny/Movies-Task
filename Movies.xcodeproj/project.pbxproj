@@ -114,7 +114,7 @@
 				5C906A74277DE67900D9C583 /* helpers */,
 				5C906A25277DDCBD00D9C583 /* network */,
 				5C906A24277DDC8A00D9C583 /* movies module */,
-				5C906A23277DDC7400D9C583 /* authontication */,
+				5C906A23277DDC7400D9C583 /* authontication module */,
 				5C906A21277DDC5600D9C583 /* appDelegate&sceneDelegate */,
 				5C906A14277DD9FB00D9C583 /* Assets.xcassets */,
 				5C906A16277DD9FB00D9C583 /* LaunchScreen.storyboard */,
@@ -133,14 +133,14 @@
 			path = "appDelegate&sceneDelegate";
 			sourceTree = "<group>";
 		};
-		5C906A23277DDC7400D9C583 /* authontication */ = {
+		5C906A23277DDC7400D9C583 /* authontication module */ = {
 			isa = PBXGroup;
 			children = (
 				5C906A3F277DDE1B00D9C583 /* domain */,
 				5C906A3E277DDE1500D9C583 /* data */,
 				5C906A3D277DDE0400D9C583 /* presentation */,
 			);
-			path = authontication;
+			path = "authontication module";
 			sourceTree = "<group>";
 		};
 		5C906A24277DDC8A00D9C583 /* movies module */ = {
