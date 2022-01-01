@@ -12,5 +12,4 @@ target 'Movies' do
   pod 'Alamofire'
   pod 'netfox'
   pod 'SDWebImage'
-
 end

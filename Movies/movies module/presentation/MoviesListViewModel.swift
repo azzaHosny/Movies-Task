@@ -40,6 +40,7 @@ class MoviesListViewModel {
     }
     
     func getPopularMovieList(params: PopularMoviesRequest) {
+        
         getPopularMoviesUseCase.build(param: params, moviesRepo: movieRepo).subscribe( onNext: { [weak self] result in
             guard let self = self else { return }
             self.getPopularMoviesSubject.onNext(result)
@@ -48,5 +49,4 @@ class MoviesListViewModel {
             self.getPopularMoviesSubject.onNext(.fail(errorMsg: error.localizedDescription))
         }).disposed(by: disposBag)
     }
-   
 }

@@ -13,6 +13,7 @@ class MoviewListViewController: UIViewController {
     var popularMoviesList: [MoviesUIViewModel] = []
     private var viewModel: MoviesListViewModel
     private var disposeBag = DisposeBag()
+    private var result: Disposable?
 
     init(viewModel: MoviesListViewModel) {
         self.viewModel = viewModel
@@ -33,43 +34,64 @@ class MoviewListViewController: UIViewController {
         callMoviePopularListRequest()
     }
     
-    func registerPopularMovieCell(){
+    private func registerPopularMovieCell(){
         popularMoviesCollectionView.register(UINib(nibName: "PopularMovieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PopularMovieCollectionViewCell")
     }
     
+    
+//    private func pullToRefresh() {
+//        popularMoviesCollectionView.es.addPullToRefresh { [weak self] in
+//            guard let self = self else { return }
+//            self.popularMoviesList = []
+//            self.pagNumber = 0
+//            self.popularMoviesCollectionView.reloadData()
+//            self.callMoviePopularListRequest()
+//            self.popularMoviesCollectionView.es.resetNoMoreData()
+//            self.popularMoviesCollectionView.es.stopPullToRefresh(ignoreDate: true)
+//        }
+//    }
+
     private func setCollectionViewDelegates(){
         popularMoviesCollectionView.delegate = self
         popularMoviesCollectionView.dataSource = self
     }
  
     private func callMoviePopularListRequest(){
+        self.showLoadinIndicator(viewController: self)
         let request = PopularMoviesRequest(api_key: AppConstants.api_key.rawValue, language: AppConstants.language.rawValue, page: pagNumber, region: "")
         viewModel.getPopularMovieList(params: request)
     }
     
     private func setSubscriber(){
-        viewModel.getPopularMoviesSubject.subscribe({[weak self ] event in
+        result = viewModel.getPopularMoviesSubject.subscribe({[weak self ] event in
             if let element = event.element {
                 self?.handleResult(result: element)
             }
-        }).disposed(by: disposeBag)
+        })
+        result?.disposed(by: disposeBag)
     }
 
     
     private func handleResult(result: GetPopularMoviesViewModelStatus){
         switch result {
         case .fail:
-          break
+            self.removeLoadingIndicator(viewController: self)
         case .sucess(let data):
-            popularMoviesList = data.popularMovies
+            self.removeLoadingIndicator(viewController: self)
             pagNumber = data.pageNum
             maxPagNumber = data.totalNumOfPages
+            appendMovies(movies: data.popularMovies)
             popularMoviesCollectionView.reloadData()
         case .loading:
             break
         }
-
     }
+    func appendMovies(movies: [MoviesUIViewModel]){
+        if pagNumber <= maxPagNumber {
+            popularMoviesList += movies
+        }
+    }
+    
 }
 extension MoviewListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -83,7 +105,7 @@ extension MoviewListViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: setCollectionViewCellColums(colum: 2, collectionLayout: collectionViewLayout as! UICollectionViewFlowLayout), height: 182)
+        return CGSize(width: setCollectionViewCellColums(colum: 2, collectionLayout: collectionViewLayout as! UICollectionViewFlowLayout), height: 200)
     }
     func setCollectionViewCellColums(colum: CGFloat, collectionLayout: UICollectionViewFlowLayout) -> CGFloat {
         
@@ -97,4 +119,14 @@ extension MoviewListViewController: UICollectionViewDelegate, UICollectionViewDa
         return width
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if pagNumber < maxPagNumber && indexPath.row == popularMoviesList.count - 1 {
+            pagNumber += 1
+            callMoviePopularListRequest()
+        } else if  indexPath.row == 0 &&  pagNumber > 1 {
+            pagNumber = 1
+            popularMoviesList = []
+            callMoviePopularListRequest()
+        }
+    }
 }
