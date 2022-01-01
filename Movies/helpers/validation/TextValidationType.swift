@@ -9,9 +9,8 @@ protocol ValidationType {
     var errorMsg: String { get }
 }
 enum TextValidationType: String, ValidationType {
-    
     case email = "[A-Z0-9a-zA-Za-zء-ي٠-٩._%+-]+@[A-Za-z0-9A-Za-zء-ي٠-٩.-]+\\.[A-Za-zA-Za-zء-ي٠-٩]{2,4}"
-    case password = "[A-Za-zA-Za-zء-ي٠-٩]{8,15}$"
+    case password = "^([A-Za-zA-Za-z0-9ء-ي٠-٩ ]{8,15})$"
     
     var regex: String {
         return self.rawValue

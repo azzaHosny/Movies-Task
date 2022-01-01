@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C1CDC562780C6BE008E3DA4 /* ErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1CDC542780C6BE008E3DA4 /* ErrorTableViewCell.swift */; };
+		5C1CDC572780C6BF008E3DA4 /* ErrorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C1CDC552780C6BE008E3DA4 /* ErrorTableViewCell.xib */; };
 		5C54DF90277EF90C007E874F /* PopularMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C54DF8E277EF90C007E874F /* PopularMovieCollectionViewCell.swift */; };
 		5C54DF91277EF90C007E874F /* PopularMovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C54DF8F277EF90C007E874F /* PopularMovieCollectionViewCell.xib */; };
 		5C906A0C277DD9EF00D9C583 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C906A0B277DD9EF00D9C583 /* AppDelegate.swift */; };
@@ -41,6 +43,8 @@
 /* Begin PBXFileReference section */
 		107E5541CD1BC57D2D02D503 /* Pods-Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.debug.xcconfig"; path = "Target Support Files/Pods-Movies/Pods-Movies.debug.xcconfig"; sourceTree = "<group>"; };
 		522DB0BA3A1294F131887795 /* Pods-Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.release.xcconfig"; path = "Target Support Files/Pods-Movies/Pods-Movies.release.xcconfig"; sourceTree = "<group>"; };
+		5C1CDC542780C6BE008E3DA4 /* ErrorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTableViewCell.swift; sourceTree = "<group>"; };
+		5C1CDC552780C6BE008E3DA4 /* ErrorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorTableViewCell.xib; sourceTree = "<group>"; };
 		5C54DF8E277EF90C007E874F /* PopularMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		5C54DF8F277EF90C007E874F /* PopularMovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularMovieCollectionViewCell.xib; sourceTree = "<group>"; };
 		5C906A08277DD9EF00D9C583 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +96,15 @@
 				FE5A114117841BF48154C4B6 /* Pods_Movies.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5C1CDC532780C69C008E3DA4 /* table view cell */ = {
+			isa = PBXGroup;
+			children = (
+				5C1CDC542780C6BE008E3DA4 /* ErrorTableViewCell.swift */,
+				5C1CDC552780C6BE008E3DA4 /* ErrorTableViewCell.xib */,
+			);
+			path = "table view cell";
 			sourceTree = "<group>";
 		};
 		5C54DF8D277EF8E0007E874F /* collection view cell */ = {
@@ -211,6 +224,7 @@
 		5C906A3D277DDE0400D9C583 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				5C1CDC532780C69C008E3DA4 /* table view cell */,
 				5C906A40277DDE2700D9C583 /* login scene */,
 			);
 			path = presentation;
@@ -386,6 +400,7 @@
 			files = (
 				5C906A18277DD9FB00D9C583 /* LaunchScreen.storyboard in Resources */,
 				5C54DF91277EF90C007E874F /* PopularMovieCollectionViewCell.xib in Resources */,
+				5C1CDC572780C6BF008E3DA4 /* ErrorTableViewCell.xib in Resources */,
 				5C906A15277DD9FB00D9C583 /* Assets.xcassets in Resources */,
 				5C906A87277DF3FA00D9C583 /* urlsList.plist in Resources */,
 				5C906A44277DDE5500D9C583 /* LoginViewController.xib in Resources */,
@@ -446,6 +461,7 @@
 				5C906A9E277E062400D9C583 /* MoviesListViewModel.swift in Sources */,
 				5C906A91277DF5B600D9C583 /* LoadingIndicator.swift in Sources */,
 				5C906AA8277E06B700D9C583 /* GetMoviesListUseCase.swift in Sources */,
+				5C1CDC562780C6BE008E3DA4 /* ErrorTableViewCell.swift in Sources */,
 				5C906A30277DDD1300D9C583 /* Connectivity.swift in Sources */,
 				5C906A71277DE43A00D9C583 /* TextValidationType.swift in Sources */,
 				5C906AAF277E06DB00D9C583 /* MoviesListRepoImplementation.swift in Sources */,
