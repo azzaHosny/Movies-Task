@@ -83,7 +83,7 @@ class LoginViewController: UIViewController {
 
     }
     
-   private func enableLoginButton(isEnabled: Bool){
+    private func enableLoginButton(isEnabled: Bool){
         loginBtn.isEnabled = isEnabled
         loginBtn.alpha = isEnabled ? 1.0 : 0.5
     }
@@ -94,6 +94,7 @@ class LoginViewController: UIViewController {
 
 }
 extension LoginViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return errors.count
     }

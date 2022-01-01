@@ -5,12 +5,12 @@
 
 import UIKit
 
-protocol Validator {
+protocol ValidatorProtocol {
     func isValid(text: String?, regex: ValidationType) -> LoginScreenStatus
     func validate(email: String?, password: String?) -> LoginScreenStatus
 }
 
-class TextValidator: Validator {
+class TextValidator: ValidatorProtocol {
     
     func isValid(text: String?, regex: ValidationType) -> LoginScreenStatus {
         guard let textValue = text else { return .notValid(errorMsg: ["Empty"]) }
