@@ -16,8 +16,11 @@ class GetMoviesListUseCase: GetMoviesListUseCaseProtocol {
         
         return moviesRepo.getPopularMovies(param: param).map({
             guard let moviesObject = $0.movies else {return .fail(errorMsg: "fail to get popular movie list")}
-            let imageBaseURl = URLReader.readPropertyList(urlType: "imgBaseUrl")
-            return .sucess(movies: moviesObject.map({MoviesUIViewModel(movieName: $0.title, movieImage: imageBaseURl + $0.posterPath)}))
+        let imageBaseURl = URLReader.readPropertyList(urlType: "imgBaseUrl")
+        let movies = moviesObject.map({MoviesUIViewModel(movieName: $0.title, movieImage: imageBaseURl + $0.posterPath)})
+        let response = PopularMoviesResponseUIViewModel(pageNum: $0.page, totalNumOfPages: $0.totalPages, popularMovies: movies)
+        return .sucess(respone: response)
+                
         })
     }
 }

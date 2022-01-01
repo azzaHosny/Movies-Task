@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C54DF90277EF90C007E874F /* PopularMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C54DF8E277EF90C007E874F /* PopularMovieCollectionViewCell.swift */; };
+		5C54DF91277EF90C007E874F /* PopularMovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C54DF8F277EF90C007E874F /* PopularMovieCollectionViewCell.xib */; };
 		5C906A0C277DD9EF00D9C583 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C906A0B277DD9EF00D9C583 /* AppDelegate.swift */; };
 		5C906A0E277DD9EF00D9C583 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C906A0D277DD9EF00D9C583 /* SceneDelegate.swift */; };
 		5C906A15277DD9FB00D9C583 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C906A14277DD9FB00D9C583 /* Assets.xcassets */; };
@@ -39,6 +41,8 @@
 /* Begin PBXFileReference section */
 		107E5541CD1BC57D2D02D503 /* Pods-Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.debug.xcconfig"; path = "Target Support Files/Pods-Movies/Pods-Movies.debug.xcconfig"; sourceTree = "<group>"; };
 		522DB0BA3A1294F131887795 /* Pods-Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.release.xcconfig"; path = "Target Support Files/Pods-Movies/Pods-Movies.release.xcconfig"; sourceTree = "<group>"; };
+		5C54DF8E277EF90C007E874F /* PopularMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		5C54DF8F277EF90C007E874F /* PopularMovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularMovieCollectionViewCell.xib; sourceTree = "<group>"; };
 		5C906A08277DD9EF00D9C583 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C906A0B277DD9EF00D9C583 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C906A0D277DD9EF00D9C583 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,15 @@
 				FE5A114117841BF48154C4B6 /* Pods_Movies.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5C54DF8D277EF8E0007E874F /* collection view cell */ = {
+			isa = PBXGroup;
+			children = (
+				5C54DF8E277EF90C007E874F /* PopularMovieCollectionViewCell.swift */,
+				5C54DF8F277EF90C007E874F /* PopularMovieCollectionViewCell.xib */,
+			);
+			path = "collection view cell";
 			sourceTree = "<group>";
 		};
 		5C9069FF277DD9EF00D9C583 = {
@@ -167,10 +180,11 @@
 		5C906A39277DDDE300D9C583 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				5C54DF8D277EF8E0007E874F /* collection view cell */,
 				5C906A97277E060300D9C583 /* MoviewListViewController.swift */,
-				5C906A98277E060300D9C583 /* MoviewListViewController.xib */,
 				5C906A9D277E062400D9C583 /* MoviesListViewModel.swift */,
 				5C906AA0277E064000D9C583 /* MoviesListCordinator.swift */,
+				5C906A98277E060300D9C583 /* MoviewListViewController.xib */,
 			);
 			path = presentation;
 			sourceTree = "<group>";
@@ -371,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C906A18277DD9FB00D9C583 /* LaunchScreen.storyboard in Resources */,
+				5C54DF91277EF90C007E874F /* PopularMovieCollectionViewCell.xib in Resources */,
 				5C906A15277DD9FB00D9C583 /* Assets.xcassets in Resources */,
 				5C906A87277DF3FA00D9C583 /* urlsList.plist in Resources */,
 				5C906A44277DDE5500D9C583 /* LoginViewController.xib in Resources */,
@@ -440,6 +455,7 @@
 				5C906A0C277DD9EF00D9C583 /* AppDelegate.swift in Sources */,
 				5C906A2F277DDD1300D9C583 /* APICaller.swift in Sources */,
 				5C906AA1277E064000D9C583 /* MoviesListCordinator.swift in Sources */,
+				5C54DF90277EF90C007E874F /* PopularMovieCollectionViewCell.swift in Sources */,
 				5C906A43277DDE5500D9C583 /* LoginViewController.swift in Sources */,
 				5C906AB7277E098D00D9C583 /* PopularMoviesRequest.swift in Sources */,
 				5C906A99277E060300D9C583 /* MoviewListViewController.swift in Sources */,

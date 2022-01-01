@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBAction func loginIsPressed(_ sender: Any) {
-        
+        viewModel.routToMoviesList()
     }
     
     override func viewDidLoad() {
