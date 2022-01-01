@@ -24,5 +24,6 @@ class LoginCordinator: LoginCordinatorProtocol {
     }
     
     func routToMoviesList() {
+        MoviesListCordinator.init(navigationController: navigationController!).start()
    }
 }

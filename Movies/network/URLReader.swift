@@ -16,13 +16,13 @@ class URLReader {
         let plistPath: String? = Bundle.main.path(forResource: "urlsList", ofType: "plist")! //the path of the data
         let plistXML = FileManager.default.contents(atPath: plistPath!)! //the data in XML format
         do {
-            plistData = try PropertyListSerialization.propertyList(from: plistXML,
-                                                                   options: .mutableContainersAndLeaves,
+            plistData = try PropertyListSerialization.propertyList(from: plistXML, options: .mutableContainersAndLeaves,
                                                                    format: &format) as! [String: AnyObject]
+            if urlType == "imgBaseUrl" {
+                return plistData[urlType] as! String
+            }
             let completePath = "\(plistData["baseUrl"]!)/\(plistData[urlType] as! String)"
-            print(completePath)
             return completePath
-          
             
         } catch { // error condition
             print("Error reading plist")
