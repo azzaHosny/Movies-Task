@@ -10,6 +10,7 @@ target 'Movies' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'Alamofire'
-
+  pod 'netfox'
+  pod 'SDWebImage'
 
 end

@@ -6,33 +6,8 @@
 //
 
 import UIKit
+import SDWebImage
 
-
-
-//extension UITextField {
-//
-//    func isValid(textValidator: TextValidator?) -> Bool {
-//
-//        if var text = self.text, let textValidator = textValidator {
-//
-//            if textValidator.validationType == .email {
-//                text = text.trimmingCharacters(in: .whitespacesAndNewlines)
-//                self.text = text
-//            }
-//
-//            if textValidator.validationType == .password {
-//                text = text.trimmingCharacters(in: .whitespacesAndNewlines)
-//                self.text = text
-//            }
-//
-//            let validationResult = textValidator.validate(text: text)
-//            if !validationResult.isValid {
-//                return false
-//            }
-//        }
-//        return true
-//    }
-//}
 extension UIView {
         
     func anchorSize(to view: UIView) {
@@ -106,4 +81,28 @@ extension Encodable {
     }
     return dictionary
   }
+}
+
+extension String {
+    func matches(_ regex: String) -> Bool {
+        return self.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
+    }
+
+
+}
+extension UIImageView {
+    func downloadImage(url : String, placeHolder : UIImage?) throws{
+        if let url = URL(string: url){
+            self.sd_imageIndicator?.startAnimatingIndicator()
+            self.sd_setImage(with: url) { (image, err, type, url) in
+                if err != nil{
+                    self.sd_imageIndicator?.stopAnimatingIndicator()
+                    print("Failed to download image")
+                }
+                self.sd_imageIndicator?.stopAnimatingIndicator()
+            }
+        }
+
+    }
+    
 }

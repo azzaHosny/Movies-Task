@@ -8,8 +8,8 @@
 import UIKit
 import RxSwift
 class MoviewListViewController: UIViewController {
-    
-    @IBOutlet weak var popularMoviesCollectionView: UICollectionView!
+    var pagNumber: Int = 1
+    var maxPagNumber: Int = 0
     var popularMoviesList: [MoviesUIViewModel] = []
     private var viewModel: MoviesListViewModel
     private var disposeBag = DisposeBag()
@@ -19,6 +19,8 @@ class MoviewListViewController: UIViewController {
         super.init(nibName: "MoviewListViewController", bundle: nil)
     }
     
+    @IBOutlet weak var popularMoviesCollectionView: UICollectionView!
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -26,29 +28,42 @@ class MoviewListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerPopularMovieCell()
+        setCollectionViewDelegates()
         setSubscriber()
+        callMoviePopularListRequest()
     }
     
-    func registerPopularMovieCell() {
+    func registerPopularMovieCell(){
         popularMoviesCollectionView.register(UINib(nibName: "PopularMovieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PopularMovieCollectionViewCell")
     }
- 
     
-    private func setSubscriber() {
+    private func setCollectionViewDelegates(){
+        popularMoviesCollectionView.delegate = self
+        popularMoviesCollectionView.dataSource = self
+    }
+ 
+    private func callMoviePopularListRequest(){
+        let request = PopularMoviesRequest(api_key: AppConstants.api_key.rawValue, language: AppConstants.language.rawValue, page: pagNumber, region: "")
+        viewModel.getPopularMovieList(params: request)
+    }
+    
+    private func setSubscriber(){
         viewModel.getPopularMoviesSubject.subscribe({[weak self ] event in
             if let element = event.element {
-                self?.handleResult(result: element )
+                self?.handleResult(result: element)
             }
         }).disposed(by: disposeBag)
     }
 
     
-    private func handleResult(result: GetPopularMoviesViewModelStatus) {
+    private func handleResult(result: GetPopularMoviesViewModelStatus){
         switch result {
         case .fail:
           break
         case .sucess(let data):
             popularMoviesList = data.popularMovies
+            pagNumber = data.pageNum
+            maxPagNumber = data.totalNumOfPages
             popularMoviesCollectionView.reloadData()
         case .loading:
             break
@@ -68,7 +83,7 @@ extension MoviewListViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: setCollectionViewCellColums(colum: 2, collectionLayout: collectionViewLayout as! UICollectionViewFlowLayout), height: 150)
+        return CGSize(width: setCollectionViewCellColums(colum: 2, collectionLayout: collectionViewLayout as! UICollectionViewFlowLayout), height: 182)
     }
     func setCollectionViewCellColums(colum: CGFloat, collectionLayout: UICollectionViewFlowLayout) -> CGFloat {
         
