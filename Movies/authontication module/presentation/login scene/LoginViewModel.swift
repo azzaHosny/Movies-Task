@@ -25,5 +25,8 @@ class LoginViewModel {
         let isValid = textValidator.validate(email: email, password: password)
         validationSubject.onNext(isValid)
     }
+    func routToMoviesList() {
+        cordinator.routToMoviesList()
+    }
     
 }
