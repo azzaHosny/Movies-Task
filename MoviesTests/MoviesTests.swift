@@ -34,7 +34,7 @@ class MoviesTests: XCTestCase {
     
     func testEmailAndPasswordfailed() throws {
         try subscribEmailAndPasswordValidationIsFailed()
-        viewModel.textChange(email: "a@b.", password: "ass45")
+        viewModel.textChange(email: "a@b.", password: "assssddddddffffffffffffgggggggg45")
     }
     
     func testEmailfailed() throws {
@@ -55,7 +55,7 @@ class MoviesTests: XCTestCase {
     func subscribOnTextValidatiorSubject() throws {
         viewModel.validationSubject.subscribe {(result) in
             if let value = result.element, let status = value {
-                XCTAssert(status == .notValid(errorMsg: [TextValidationType.password.errorMsg]), "password failed")
+                XCTAssertTrue(status == .notValid(errorMsg: [TextValidationType.password.errorMsg]))
             }
         }.disposed(by: disposeBag)
     }
@@ -63,7 +63,7 @@ class MoviesTests: XCTestCase {
     func subscribOnTextValidatiorSubjectSuccess() throws {
         viewModel.validationSubject.subscribe {(result) in
             if let value = result.element, let status = value {
-                XCTAssert(status == .valid, "all is well")
+                XCTAssertTrue(status == .valid)
             }
         }.disposed(by: disposeBag)
     }
@@ -71,7 +71,7 @@ class MoviesTests: XCTestCase {
     func subscribEmailValidationIsFailed() throws {
         viewModel.validationSubject.subscribe {(result) in
             if let value = result.element, let status = value {
-                XCTAssert(status == .notValid(errorMsg: [TextValidationType.email.errorMsg]), "email failed")
+                XCTAssertTrue(status == .notValid(errorMsg: [TextValidationType.email.errorMsg]))
             }
         }.disposed(by: disposeBag)
     }
@@ -79,7 +79,7 @@ class MoviesTests: XCTestCase {
     func subscribEmailAndPasswordValidationIsFailed() throws {
         viewModel.validationSubject.subscribe {(result) in
             if let value = result.element, let status = value {
-                XCTAssert(status == .notValid(errorMsg: [TextValidationType.email.errorMsg, TextValidationType.password.errorMsg]), "email and password failed")
+                XCTAssertTrue(status == .notValid(errorMsg: [TextValidationType.email.errorMsg, TextValidationType.password.errorMsg]))
             }
         }.disposed(by: disposeBag)
     }
