@@ -12,4 +12,7 @@ target 'Movies' do
   pod 'Alamofire'
   pod 'netfox'
   pod 'SDWebImage'
+  target 'MoviesTests' do
+     inherit! :search_paths
+   end
 end
